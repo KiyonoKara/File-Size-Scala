@@ -18,7 +18,7 @@ object FileSize {
 
     try {
       val bytes: Long = Files.size(path)
-      this.readableFileSize(bytes)
+      this.readableFileSize(bytes.asInstanceOf[Long])
     } catch {
       case io: IOException =>
         io.printStackTrace()
@@ -29,7 +29,7 @@ object FileSize {
   def readableFileSize(size: Long, shortened: Boolean = true): String = {
     if (size <= 0) return 0.toString
 
-    val units: Array[String] = if (shortened) Array("B", "KB", "MB", "GB", "TB") else Array("Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes")
+    val units: Array[String] = if (shortened) Array("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB") else Array("Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes", "Peta Bytes", "Exa Bytes", "Zetta Bytes", "Yotta Bytes")
     val groups: Int = (Math.log10(size) / Math.log10(1024)).asInstanceOf[Int]
     val decimalFormat: String = s"""${new DecimalFormat("#,##0.#").format(size / Math.pow(1024, groups))} ${units(groups)}"""
     decimalFormat
