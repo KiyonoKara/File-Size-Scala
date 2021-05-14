@@ -18,7 +18,7 @@ object FileSize {
 
     try {
       val bytes: Long = Files.size(path)
-      this.readableFileSize(bytes)
+      this.readableFileSize(bytes.asInstanceOf[Long])
     } catch {
       case io: IOException =>
         io.printStackTrace()
