@@ -22,7 +22,10 @@ object FileSize {
     } catch {
       case io: IOException =>
         io.printStackTrace()
-        io.getMessage
+        io.getMessage;
+      case so: StackOverflowError =>
+        so.printStackTrace()
+        so.getMessage;
     }
   }
 
