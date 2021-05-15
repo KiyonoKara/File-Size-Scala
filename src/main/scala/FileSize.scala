@@ -12,6 +12,14 @@ import java.text.DecimalFormat
 
 object FileSize {
   sealed trait groups
+  private val ByteSymbols: Map[String, Array[String]] = Map(
+    "JEDEC" -> Array("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"),
+    "IEC" -> Array("B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
+  )
+
+  private val FullFormUnits: Map[String, Array[String]] = Map(
+    "JEDEC" -> Array("Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes", "Peta Bytes", "Exa Bytes", "Zetta Bytes", "Yotta Bytes"),
+  )
 
   def getFileSize(file: String, shortened: Boolean = true, integer: Boolean = false): String = {
     val path: Path = Paths.get(file)
