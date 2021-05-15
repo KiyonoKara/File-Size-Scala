@@ -1,3 +1,5 @@
+package assets
+
 class TestFile {
 
 }
