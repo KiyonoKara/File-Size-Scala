@@ -1,4 +1,4 @@
-name := "File-Size"
+name := "File-Size-Scala"
 
 version := "0.1"
 
