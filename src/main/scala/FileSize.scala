@@ -13,12 +13,12 @@ import java.text.DecimalFormat
 object FileSize {
   sealed trait groups
 
-  def getFileSize(file: String, shortened: Boolean = true): String = {
+  def getFileSize(file: String, shortened: Boolean = true, integer: Boolean = false): String = {
     val path: Path = Paths.get(file)
 
     try {
       val bytes: Long = Files.size(path)
-      this.readableFileSize(bytes.asInstanceOf[Long])
+      this.readableFileSize(bytes.asInstanceOf[Long], shortened, integer)
     } catch {
       case io: IOException =>
         io.printStackTrace()
