@@ -12,6 +12,13 @@ import java.text.DecimalFormat
 
 object FileSize {
   sealed trait groups
+
+  private val UnitTypes: Map[String, String] = Map(
+    "JEDEC" -> "JEDEC",
+    "IEC" -> "IEC",
+    "FULL_FORM" -> "FULL_FORM"
+  )
+
   private val ByteSymbols: Map[String, Array[String]] = Map(
     "JEDEC" -> Array("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"),
     "IEC" -> Array("B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
@@ -26,7 +33,7 @@ object FileSize {
 
     try {
       val bytes: Long = Files.size(path)
-      this.readableFileSize(bytes.asInstanceOf[Long], shortened, integer)
+      this.readableFileSize(bytes.asInstanceOf[Long], shortened, unitType = "IEC")
     } catch {
       case io: IOException =>
         io.printStackTrace()
@@ -40,10 +47,17 @@ object FileSize {
     }
   }
 
-  def readableFileSize(size: Long, shortened: Boolean = true, integer: Boolean = false): String = {
+  def readableFileSize(size: Long, isSymbol: Boolean = true, unitType: String = "JEDEC", integer: Boolean = false): String = {
     if (size <= 0) return 0.toString
 
-    val units: Array[String] = if (shortened) Array("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB") else Array("Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes", "Peta Bytes", "Exa Bytes", "Zetta Bytes", "Yotta Bytes")
+    val units: Array[String] = unitType.toUpperCase match {
+      case "JEDEC" =>
+        if (isSymbol) ByteSymbols.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]])
+        else FullFormUnits.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
+      case "IEC" =>
+        if (isSymbol) ByteSymbols.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]])
+        else ByteSymbols.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
+    }
     val groups: Int = (Math.log10(size) / Math.log10(1024)).asInstanceOf[Int]
     val decimalFormat: String = s"""${new DecimalFormat(if (integer) "#,##0.#" else "#,##0.00").format(size / Math.pow(1024, groups))} ${units(groups)}"""
     decimalFormat
