@@ -4,7 +4,7 @@
  */
 
 // I/O & New I/O
-import java.nio.file.{Files, Path, Paths}
+import java.nio.file.{Files, NoSuchFileException, Path, Paths}
 import java.io.IOException
 
 // Text
@@ -26,6 +26,9 @@ object FileSize {
       case so: StackOverflowError =>
         so.printStackTrace()
         so.getMessage;
+      case noSuchFileException: NoSuchFileException =>
+        noSuchFileException.printStackTrace()
+        noSuchFileException.getMessage;
     }
   }
 
