@@ -28,12 +28,12 @@ object FileSize {
     "JEDEC" -> Array("Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes", "Petabytes", "Exabytes", "Zettabytes", "Yottabytes"),
   )
 
-  def getFileSize(file: String, shortened: Boolean = true, integer: Boolean = false): String = {
+  def getFileSize(file: String, isSymbol: Boolean = true, unitType: String = UnitTypes.getOrElse("JEDEC", "JEDEC".asInstanceOf[String]), integer: Boolean = false): String = {
     val path: Path = Paths.get(file)
 
     try {
       val bytes: Long = Files.size(path)
-      this.readableFileSize(bytes.asInstanceOf[Long], shortened, unitType = "IEC")
+      this.readableFileSize(bytes.asInstanceOf[Long], isSymbol, unitType, integer)
     } catch {
       case io: IOException =>
         io.printStackTrace()
