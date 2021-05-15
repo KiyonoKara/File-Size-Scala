@@ -37,8 +37,4 @@ object FileSize {
     val decimalFormat: String = s"""${new DecimalFormat(if (integer) "#,##0.#" else "#,##0.00").format(size / Math.pow(1024, groups))} ${units(groups)}"""
     decimalFormat
   }
-
-  def main(args: Array[String]): Unit = {
-    println(getFileSize("src/main/scala/TestFile.scala"))
-  }
 }
