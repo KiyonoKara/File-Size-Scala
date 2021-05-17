@@ -13,6 +13,8 @@ import java.text.DecimalFormat
 object FileSize {
   sealed trait groups
 
+  implicit val conversion: Double = 1.048576
+
   private val UnitTypes: Map[String, String] = Map(
     "JEDEC" -> "JEDEC",
     "IEC" -> "IEC",
@@ -28,6 +30,10 @@ object FileSize {
     "JEDEC" -> Array("Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes", "Petabytes", "Exabytes", "Zettabytes", "Yottabytes"),
     "IEC" -> Array("Bytes", "Kibibytes", "Mebibytes", "Gibibytes", "Tebibytes", "Pebibytes", "Exbibytes", "Zebibytes", "Yobibytes")
   )
+
+  private def unitConversion(x: Double, y: Double): Long = {
+    (x / y).asInstanceOf[Number].longValue
+  }
 
   def getFileSize(file: String, isSymbol: Boolean = true, unitType: String = UnitTypes.getOrElse("JEDEC", "JEDEC".asInstanceOf[String]), integer: Boolean = false): String = {
     val path: Path = Paths.get(file)
