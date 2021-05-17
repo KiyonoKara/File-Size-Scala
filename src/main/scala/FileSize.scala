@@ -26,6 +26,7 @@ object FileSize {
 
   private val FullFormUnits: Map[String, Array[String]] = Map(
     "JEDEC" -> Array("Bytes", "Kilobytes", "Megabytes", "Gigabytes", "Terabytes", "Petabytes", "Exabytes", "Zettabytes", "Yottabytes"),
+    "IEC" -> Array("Bytes", "Kibibytes", "Mebibytes", "Gibibytes", "Tebibytes", "Pebibytes", "Exbibytes", "Zebibytes", "Yobibytes")
   )
 
   def getFileSize(file: String, isSymbol: Boolean = true, unitType: String = UnitTypes.getOrElse("JEDEC", "JEDEC".asInstanceOf[String]), integer: Boolean = false): String = {
