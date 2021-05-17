@@ -63,10 +63,23 @@ object FileSize {
         else FullFormUnits.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
       case "IEC" =>
         if (isSymbol) ByteSymbols.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]])
-        else ByteSymbols.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
+        else FullFormUnits.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
     }
-    val groups: Int = (Math.log10(size) / Math.log10(1024)).asInstanceOf[Int]
-    val decimalFormat: String = s"""${new DecimalFormat(if (integer) "#,##0.#" else "#,##0.00").format(size / Math.pow(1024, groups))} ${units(groups)}"""
+
+    val groups: Int = unitType.toUpperCase match {
+      case "JEDEC" =>
+        (Math.log10(size) / Math.log10(1024)).asInstanceOf[Int];
+      case "IEC" =>
+        unitConversion(Math.log10(size) / Math.log10(1024), this.conversion).asInstanceOf[Int];
+    }
+    val decimalFormat: String = s"""${new DecimalFormat(if (integer) "#,##0.#" else "#,##0.00").format(
+      unitType.toUpperCase match {
+        case "JEDEC" =>
+          size / Math.pow(1024, groups);
+        case "IEC" =>
+          unitConversion(size / Math.pow(1024, groups), this.conversion);
+      }
+    )} ${units(groups)}"""
     decimalFormat
   }
 }
