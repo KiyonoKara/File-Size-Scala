@@ -56,8 +56,9 @@ object FileSize {
 
   def readableFileSize(size: Long, isSymbol: Boolean = true, unitType: String = "JEDEC", integer: Boolean = false): String = {
     if (size <= 0) return 0.toString
+    val unitTypeUC: String = unitType.toUpperCase
 
-    val units: Array[String] = unitType.toUpperCase match {
+    val units: Array[String] = unitTypeUC match {
       case "JEDEC" =>
         if (isSymbol) ByteSymbols.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]])
         else FullFormUnits.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
@@ -66,14 +67,14 @@ object FileSize {
         else FullFormUnits.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
     }
 
-    val groups: Int = unitType.toUpperCase match {
+    val groups: Int = unitTypeUC match {
       case "JEDEC" =>
         (Math.log10(size) / Math.log10(1024)).asInstanceOf[Int];
       case "IEC" =>
         unitConversion(Math.log10(size) / Math.log10(1024), this.conversion).asInstanceOf[Int];
     }
     val decimalFormat: String = s"""${new DecimalFormat(if (integer) "#,##0.#" else "#,##0.00").format(
-      unitType.toUpperCase match {
+      unitTypeUC match {
         case "JEDEC" =>
           size / Math.pow(1024, groups);
         case "IEC" =>
