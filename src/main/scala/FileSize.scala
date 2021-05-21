@@ -13,7 +13,7 @@ import java.text.DecimalFormat
 object FileSize {
   sealed trait groups
 
-  implicit val conversion: Double = 1.048576
+  private implicit val conversion: Double = 1.048576
 
   private val UnitTypes: Map[String, String] = Map(
     "JEDEC" -> "JEDEC",
