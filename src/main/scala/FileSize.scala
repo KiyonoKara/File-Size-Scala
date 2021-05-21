@@ -54,6 +54,14 @@ object FileSize {
     }
   }
 
+  /**
+   * Returns a human-readable file size with the given parameters
+   * @param size File size in bytes
+   * @param isSymbol Determines if the output is abbreviated / symbolized
+   * @param unitType Two standards, JEDEC & IEC
+   * @param integer Determine whether the output size is a decimal or not
+   * @return {String} File size with labeled units
+   */
   def readableFileSize(size: Long, isSymbol: Boolean = true, unitType: String = "JEDEC", integer: Boolean = false): String = {
     if (size <= 0) return 0.toString
     val unitTypeUC: String = unitType.toUpperCase
