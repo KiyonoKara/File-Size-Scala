@@ -62,7 +62,7 @@ object FileSize {
    * @param integer Determine whether the output size is a decimal or not
    * @return {String} File size with labeled units
    */
-  def readableFileSize(size: Long, isSymbol: Boolean = true, unitType: String = "JEDEC", integer: Boolean = false): String = {
+  implicit private def readableFileSize(size: Long, isSymbol: Boolean = true, unitType: String = "JEDEC", integer: Boolean = false): String = {
     if (size <= 0) return 0.toString
     val unitTypeUC: String = unitType.toUpperCase
 
