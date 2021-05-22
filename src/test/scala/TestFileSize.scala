@@ -5,5 +5,7 @@ object TestFileSize {
     println(getFileSize("src/test/scala/assets/TestFile.scala"))
     println(getFileSize("src/test/scala/assets/TestFile.scala", isSymbol = false, "IEC", integer = true))
     println(getFileSize("src/test/scala/assets/TestFile.scala", isSymbol = true, "JEDEC", integer = true))
+
+    println(getFileSize("src/test/scala/assets/TestFile.kt"))
   }
 }
