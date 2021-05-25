@@ -1,6 +1,6 @@
 object TestFile {
   def printString(str: String): Any = {
-    println(str.asInstanceOf[String])
+    println(str)
   }
 }
 
