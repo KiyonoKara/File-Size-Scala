@@ -35,7 +35,7 @@ object FileSize {
     (x / y).asInstanceOf[Number].longValue
   }
 
-  def getFileSize(file: String, isSymbol: Boolean = true, unitType: String = UnitTypes.getOrElse("JEDEC", "JEDEC".asInstanceOf[String]), integer: Boolean = false): String = {
+  def getFileSize(file: String, isSymbol: Boolean = true, unitType: String = UnitTypes.getOrElse("JEDEC", "JEDEC"), integer: Boolean = false): String = {
     val path: Path = Paths.get(file)
 
     try {
