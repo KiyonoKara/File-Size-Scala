@@ -35,6 +35,14 @@ object FileSize {
     (x / y).asInstanceOf[Number].longValue
   }
 
+  /**
+   * Gets the file size, can return the units
+   * @param file Path to the file
+   * @param isSymbol Symbol or full unit name
+   * @param unitType JEDEC, IEC, or full form standards
+   * @param integer Determine whether the size is an integer or not
+   * @return String with the size and units
+   */
   def getFileSize(file: String, isSymbol: Boolean = true, unitType: String = UnitTypes.getOrElse("JEDEC", "JEDEC"), integer: Boolean = false): String = {
     val path: Path = Paths.get(file)
 
