@@ -31,6 +31,12 @@ object FileSize {
     "IEC" -> Array("Bytes", "Kibibytes", "Mebibytes", "Gibibytes", "Tebibytes", "Pebibytes", "Exbibytes", "Zebibytes", "Yobibytes")
   )
 
+  /**
+   * Private method for unit conversions; Shouldn't be used outside of the object
+   * @param x First
+   * @param y Second
+   * @return Output
+   */
   private def unitConversion(x: Double, y: Double): Long = {
     (x / y).asInstanceOf[Number].longValue
   }
