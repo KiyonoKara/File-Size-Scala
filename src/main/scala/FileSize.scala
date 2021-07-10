@@ -13,6 +13,7 @@ import java.text.DecimalFormat
 object FileSize {
   sealed trait groups
 
+  // Value for converting JEDEC to IEC standards such as KB to KiB
   private implicit val conversion: Double = 1.048576
 
   private val UnitTypes: Map[String, String] = Map(
