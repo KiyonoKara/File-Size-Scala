@@ -14,9 +14,11 @@ An uncomplicated program that returns the size of a file in the form of a human-
 ## Overview
 As a way to use Java's IO and NIO modules, this repository was created to utilize these tools. The software is simple and simply returns the size of a file with labeled units, hence making it "human-readable." 
 
-
 ## Usage
 The best usage of this software is to format file sizes, and get data & statistics regarding the file size. There are many things people can do with getting the file size along and use it to make judgements like knowing when to get more system storage or when to cut down on the size of a large project.
+
+## Project Status
+Complete.
 
 ## Contributing
 Read about contributing to this repository [here](CONTRIBUTING.md).
