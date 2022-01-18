@@ -2,10 +2,10 @@
 
 <div>
   <p>
-    <a href="https://github.com/KaNguy/File-Size-Scala/pulls"><img src="https://shields.io/github/issues-pr/KaNguy/File-Size-Scala?color=da301b" alt="PRs" /></a>
-    <a><img src="https://shields.io/github/languages/code-size/KaNguy/File-Size-Scala?color=da301b" /></a>
-    <a><img src="https://shields.io/tokei/lines/github/KaNguy/File-Size-Scala" /></a>
-    <a href="LICENSE.md"><img src="https://img.shields.io/github/license/KaNguy/File-Size-Scala?color=007ace" alt="License" /></a>
+    <a href="https://github.com/KiyonoKara/File-Size-Scala/pulls"><img src="https://shields.io/github/issues-pr/KiyonoKara/File-Size-Scala?color=da301b" alt="PRs" /></a>
+    <a><img src="https://shields.io/github/languages/code-size/KiyonoKara/File-Size-Scala?color=da301b" /></a>
+    <a><img src="https://shields.io/tokei/lines/github/KiyonoKara/File-Size-Scala" /></a>
+    <a href="LICENSE.md"><img src="https://img.shields.io/github/license/KiyonoKara/File-Size-Scala?color=007ace" alt="License" /></a>
   </p>
 </div>
 
