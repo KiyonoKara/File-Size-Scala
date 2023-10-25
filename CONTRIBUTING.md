@@ -19,6 +19,6 @@ Contributions to this repository are made with either Issues or Pull Requests.
 ## Issues
 - For bugs, fixes, proposal of new features, feedback, or support, please create an Issue.
     1. Please remember to describe what your inquiry is, and make sure it is related to the repository.
-    2. Labeling your Issues is recommended.
-- If you want to indicate the status of an issue, adding reactions are helpful.
+    2. Labeling your Issue is recommended.
+- You can add reactions instead of replying to follow-ups that don't require replies.
 
