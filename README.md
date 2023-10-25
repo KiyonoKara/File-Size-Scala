@@ -9,13 +9,13 @@
   </p>
 </div>
 
-An uncomplicated program that returns the size of a file in the form of a human-readable string.  
+An simple program that prints a human-readable file size from a given path.
 
 ## Overview
-As a way to use Java's IO and NIO modules, this repository was created to utilize these tools. The software is simple and simply returns the size of a file with labeled units, hence making it "human-readable." 
+This project makes use of Java's IO and NIO libraries. The software is simply made to return the size of a file labeled with its units, thus being human-readable.  
 
 ## Usage
-The best usage of this software is to format file sizes, and get data & statistics regarding the file size. There are many things people can do with getting the file size along and use it to make judgements like knowing when to get more system storage or when to cut down on the size of a large project.
+ Format file sizes for people to read, getting some data or insight regarding a file's size.
 
 ## Project Status
 Complete.
