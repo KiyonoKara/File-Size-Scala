@@ -4,8 +4,8 @@
  */
 
 // I/O & New I/O
-import java.nio.file.{Files, NoSuchFileException, Path, Paths}
 import java.io.IOException
+import java.nio.file.{Files, NoSuchFileException, Path, Paths}
 
 // Text
 import java.text.DecimalFormat
@@ -39,7 +39,7 @@ object FileSize {
    * @return Output
    */
   private def unitConversion(x: Double, y: Double): Long = {
-    (x / y).asInstanceOf[Number].longValue
+    (x / y).longValue
   }
 
   /**
@@ -83,11 +83,9 @@ object FileSize {
 
     val units: Array[String] = unitTypeUC match {
       case "JEDEC" =>
-        if (isSymbol) ByteSymbols.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]])
-        else FullFormUnits.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
+        (if (isSymbol) ByteSymbols else FullFormUnits).getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]])
       case "IEC" =>
-        if (isSymbol) ByteSymbols.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]])
-        else FullFormUnits.getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]]);
+        (if (isSymbol) ByteSymbols else FullFormUnits).getOrElse(unitType.toUpperCase, "".asInstanceOf[Array[String]])
     }
 
     val groups: Int = unitTypeUC match {
