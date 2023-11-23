@@ -9,13 +9,13 @@
   </p>
 </div>
 
-An simple program that prints a human-readable file size from a given path.
+A simple program that prints a human-readable file size from a given path.
 
 ## Overview
 This project makes use of Java's IO and NIO libraries. The software is simply made to return the size of a file labeled with its units, thus being human-readable.  
 
 ## Usage
- Format file sizes for people to read, getting some data or insight regarding a file's size.
+Formats file sizes for humans to read, gets some data or insight regarding a file's size.
 
 ## Project Status
 Complete.
